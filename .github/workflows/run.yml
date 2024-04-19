@@ -1,0 +1,28 @@
+name: GOOD TABLE EVERY DAY
+
+on: 
+  push:
+  schedule:
+    - cron: '0 */3 * * *'
+
+
+env:
+    API_KEY: ${{ secrets.spreadsheet_id }}
+    KEY_TABLE: ${{ secrets.viID }}
+    
+
+jobs:
+    Daily-Run:
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Checkout Code
+              uses: actions/checkout@v4
+            - name: Use secret JSON
+              env:
+                SECRET_JSON: ${{ secrets.NUTRA }}
+              run: echo "$SECRET_JSON" > secret.json
+            - name: Install Dependencies
+              run: pip install -r requirements.txt 
+            - name: Run App
+              run: python app.py
