@@ -11,7 +11,7 @@ wb = openpyxl.Workbook()
 sheet1 = wb.active
 
 scope = ['https://www.googleapis.com/auth/spreadsheets']
-credentials = ServiceAccountCredentials.from_json_keyfile_name("nutragenanalytics-eae0615deabf.json", scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name("secret.json", scope)
 client = gspread.authorize(credentials)
 
 spreadsheet_id = os.getenv("spreadsheet_id")
